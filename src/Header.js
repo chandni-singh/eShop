@@ -2,9 +2,11 @@ import React from "react";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import SearchIcon from "@mui/icons-material/Search";
+import { useStateValue } from "./StateProvider";
 import "./Header.css";
 
 function Header() {
+  const [{ basket }, dispatch] = useStateValue();
   return (
     <div className="header">
       <a href="/" style={{ textDecoration: "none" }}>
@@ -34,7 +36,9 @@ function Header() {
               className="nav__itemBasket nav__itemLineOne"
               fontSize="large"
             />
-            <span className="nav__itemlineTwo nav__basketCount">0</span>
+            <span className="nav__itemlineTwo nav__basketCount">
+              {basket.length}
+            </span>
           </div>
         </a>
       </div>
